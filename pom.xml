@@ -1,0 +1,124 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.uppeak</groupId>
+    <artifactId>uppeak-pck-parent</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+    <name>uppeak-pck-parent</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <maven_compiler_plugin>3.6.1</maven_compiler_plugin>
+        <org_spring_boot_version>2.0.4.RELEASE</org_spring_boot_version>
+        <org_spring_cloud_version>f</org_spring_cloud_version>
+        <org_spring_cloud_alibaba_version>2.6.11</org_spring_cloud_alibaba_version>
+        <com_apollo_client_version>1.4.0</com_apollo_client_version>
+        <org_icss_commons_version>1.0.0</org_icss_commons_version>
+        <org_icss_framework_version>1.0.0</org_icss_framework_version>
+        <org_icss_framework_boot_version>1.0.0</org_icss_framework_boot_version>
+        <org_uppeak_pck_version>1.0.0</org_uppeak_pck_version>
+        <org_apache_httpcomponents_version>4.5.5</org_apache_httpcomponents_version>
+        <io_jsonwebtoken_jjwt_version>0.9.1</io_jsonwebtoken_jjwt_version>
+        <io_minio_version>6.0.7</io_minio_version>
+        <org_apache_poi_version>3.17</org_apache_poi_version>
+        <com_spire_doc_version>2.6.1</com_spire_doc_version>
+        <com_spire_office_version>2.2.0</com_spire_office_version>
+        <jsoup_version>1.12.1</jsoup_version>
+        <jacob_version>1.19</jacob_version>
+        <aspose_words_version>7.0.0</aspose_words_version>
+        <page_office_version>4.5.0.10</page_office_version>
+        <spring_cloud_gateway_core>2.0.1.RELEASE</spring_cloud_gateway_core>
+    </properties>
+
+    <dependencies>
+        <!-- lombok依赖包 -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.10</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- spring boot 依赖管理 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${org_spring_boot_version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <!-- spring cloud 依赖管理 -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Finchley.RELEASE</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+                <dependency>
+                    <groupId>org.springframework.cloud</groupId>
+                    <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+                    <version>0.2.2.RELEASE</version>
+                </dependency>
+                <dependency>
+                    <groupId>com.alibaba.nacos</groupId>
+                    <artifactId>nacos-client</artifactId>
+                    <version>1.1.0</version>
+                </dependency>
+            <!-- apollo-client 依赖管理 (废弃) -->
+
+
+
+
+
+            <!-- apache httpclient 依赖管理 -->
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${org_apache_httpcomponents_version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpmime</artifactId>
+                <version>${org_apache_httpcomponents_version}</version>
+            </dependency>
+
+
+            <!-- MinIO 存储服务器-->
+            <dependency>
+                <groupId>io.minio</groupId>
+                <artifactId>minio</artifactId>
+                <version>${io_minio_version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${org_spring_boot_version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <modules>
+        <module>nacos</module>
+        <module>gateway</module>
+        <module>symbol</module>
+        <module>feign-api</module>
+
+    </modules>
+
+</project>

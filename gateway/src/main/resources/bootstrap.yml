@@ -1,0 +1,40 @@
+server:
+  port: 8004
+
+ribbon:
+  eager-load:
+    enabled: true
+    clients: pck-server-uaa,pck-kernel-dict,pck-kernel-system,pck-service-base,pck-service-case,pck-service-core,pck-service-exam,pck-service-subject,pck-service-extuser
+
+spring:
+  application:
+    name: gateway
+  main:
+    allow-bean-definition-overriding: true
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        # pck-authorize 服务路由配置
+        - id: nacos
+          uri: lb://config
+          predicates:
+            - Path=/to/**
+          filters:
+            - StripPrefix=1
+        - id: symbol
+          uri: lb://symbol
+          predicates:
+            - Path=/symbol/**
+          filters:
+            - StripPrefix=1
+
+
+
+
